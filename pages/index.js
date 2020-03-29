@@ -30,14 +30,14 @@ const createRenderer = lang => {
             }
           `}</style>
           <div className="text">
-            <strong>{days}</strong>{" "}
-            {getString(days === 1 ? "day" : "days", lang)},{" "}
-            <strong>{hours}</strong>{" "}
-            {getString(hours === 1 ? "hour" : "hours", lang)},{" "}
-            <strong>{minutes}</strong>{" "}
-            {getString(minutes === 1 ? "minute" : "minutes", lang)},{" "}
-            <strong>{seconds}</strong>{" "}
-            {getString(seconds === 1 ? "second" : "seconds", lang)}.
+            <strong>{days}</strong>&nbsp;
+            {getString(days === 1 ? "day" : "days", lang)}{" "}
+            <strong>{hours}</strong>&nbsp;
+            {getString(hours === 1 ? "hour" : "hours", lang)}{" "}
+            <strong>{minutes}</strong>&nbsp;
+            {getString(minutes === 1 ? "minute" : "minutes", lang)}{" "}
+            <strong>{seconds}</strong>&nbsp;
+            {getString(seconds === 1 ? "second" : "seconds", lang)}
           </div>
         </>
       );
