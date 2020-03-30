@@ -258,7 +258,7 @@ const Index = ({ language }) => {
         <p>{getString("heading", language)}</p>
 
         <Progressbar
-          start={new Date(2020, 2, 13)}
+          start={new Date(2020, 2, 16)}
           end={new Date(2020, 3, 20)}
         />
         <p className="disclaimer">{getString("disclaimer", language)}</p>
