@@ -10,6 +10,72 @@ const getString = (str, lang) => {
   return strings[str][lang];
 };
 
+const Table = ({ children }) => {
+  return (
+    <>
+      <style jsx>
+        {`
+          div {
+            font-size: 50px;
+            display: inline-flex;
+            flex-direction: column;
+          }
+        `}
+      </style>
+      <div>{children}</div>
+    </>
+  );
+};
+
+const Row = ({ children }) => {
+  return (
+    <>
+      <style jsx>
+        {`
+          div {
+            display:flex
+            align-self: center;
+          }
+        `}
+      </style>
+      <div>{children}</div>
+    </>
+  );
+};
+
+const Value = ({ children }) => {
+  return (
+    <>
+      <style jsx>
+        {`
+          div {
+            font-weight: bold;
+            margin-right: 10px;
+            flex: 1;
+            text-align: right;
+          }
+        `}
+      </style>
+      <div>{children}</div>
+    </>
+  );
+};
+
+const Label = ({ children }) => {
+  return (
+    <>
+      <style jsx>
+        {`
+        flex: 1;
+        text-align: left;
+          }
+        `}
+      </style>
+      <div>{children}</div>
+    </>
+  );
+};
+
 const createRenderer = lang => {
   return ({ days, hours, minutes, seconds, completed }) => {
     if (completed) {
@@ -23,22 +89,28 @@ const createRenderer = lang => {
       // Render a countdown
       return (
         <>
-          <style jsx>{`
-            .text {
-              font-size: 50px;
-              text-align: center;
-            }
-          `}</style>
-          <div className="text">
-            <strong>{days}</strong>&nbsp;
-            {getString(days === 1 ? "day" : "days", lang)}{" "}
-            <strong>{hours}</strong>&nbsp;
-            {getString(hours === 1 ? "hour" : "hours", lang)}{" "}
-            <strong>{minutes}</strong>&nbsp;
-            {getString(minutes === 1 ? "minute" : "minutes", lang)}{" "}
-            <strong>{seconds}</strong>&nbsp;
-            {getString(seconds === 1 ? "second" : "seconds", lang)}
-          </div>
+          <Table>
+            <Row>
+              <Value>{days.toString().padStart(2, "0")}</Value>
+              <Label>{getString(days === 1 ? "day" : "days", lang)}</Label>
+            </Row>
+            <Row>
+              <Value>{hours.toString().padStart(2, "0")}</Value>
+              <Label>{getString(hours === 1 ? "hour" : "hours", lang)}</Label>
+            </Row>
+            <Row>
+              <Value>{minutes.toString().padStart(2, "0")}</Value>
+              <Label>
+                {getString(minutes === 1 ? "minute" : "minutes", lang)}
+              </Label>
+            </Row>
+            <Row>
+              <Value>{seconds.toString().padStart(2, "0")}</Value>
+              <Label>
+                {getString(seconds === 1 ? "second" : "seconds", lang)}
+              </Label>
+            </Row>
+          </Table>
         </>
       );
     }
@@ -114,10 +186,9 @@ const Index = ({ language }) => {
       </Head>
       <style jsx>{`
         .container {
-          margin: 0 auto;
-          margin-top: 100px;
-          width: 80vw;
-          text-align: center;
+          margin-top: 20px;
+          margin-let: 20px;
+          text-align: left;
 
           font-family: letter-gothic-std, monospace;
 

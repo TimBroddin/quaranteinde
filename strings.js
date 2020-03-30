@@ -49,7 +49,7 @@ export const strings = {
     nl: "minuten",
     fr: "minutes"
   },
-  minuut: {
+  minute: {
     nl: "minuut",
     fr: "minute"
   },
