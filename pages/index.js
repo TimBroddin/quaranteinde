@@ -117,6 +117,45 @@ const createRenderer = lang => {
   };
 };
 
+const Progressbar = ({ start, end }) => {
+  const startMs = start.getTime();
+  const [nowMs, setNowMs] = useState(new Date().getTime());
+  const endMs = end.getTime();
+
+  const totalMs = endMs - startMs;
+  const doneMs = nowMs - startMs;
+  const pct = ((doneMs / totalMs) * 100).toFixed(5);
+
+  useEffect(() => {
+    setInterval(() => {
+      setNowMs(new Date().getTime());
+    }, 100);
+  }, []);
+
+  return (
+    <div>
+      <style jsx>{`
+        .outer {
+          border: 2px solid black;
+          padding: 3px;
+        }
+
+        .inner {
+          background-color: black;
+          padding: 3px;
+          text-align: center;
+          color: white;
+        }
+      `}</style>
+      <div className="outer">
+        <div className="inner" style={{ width: `${pct}%` }}>
+          {pct}%
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const Index = ({ language }) => {
   useAnalytics();
   const [loaded, setLoaded] = useState(false);
@@ -224,8 +263,13 @@ const Index = ({ language }) => {
         ) : null}
         <p>{getString("heading", language)}</p>
 
-        <p className="credit">{getString("credit", language)}</p>
+        <Progressbar
+          start={new Date(2020, 2, 13)}
+          end={new Date(2020, 3, 20)}
+        />
         <p className="disclaimer">{getString("disclaimer", language)}</p>
+
+        <p className="credit">{getString("credit", language)}</p>
       </div>
     </>
   );
