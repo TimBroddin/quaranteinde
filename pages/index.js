@@ -189,6 +189,8 @@ const Index = ({ language }) => {
           margin-top: 20px;
           margin-let: 20px;
           text-align: left;
+          width: 400px;
+          margin: 0 auto;
 
           font-family: letter-gothic-std, monospace;
 
