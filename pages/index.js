@@ -17,7 +17,6 @@ const Table = ({ children }) => {
         {`
           div {
             font-size: 50px;
-            display: inline-flex;
             flex-direction: column;
           }
         `}
@@ -33,8 +32,7 @@ const Row = ({ children }) => {
       <style jsx>
         {`
           div {
-            display:flex
-            align-self: center;
+            display: flex;
           }
         `}
       </style>
@@ -51,8 +49,6 @@ const Value = ({ children }) => {
           div {
             font-weight: bold;
             margin-right: 10px;
-            flex: 1;
-            text-align: right;
           }
         `}
       </style>
@@ -67,7 +63,6 @@ const Label = ({ children }) => {
       <style jsx>
         {`
         flex: 1;
-        text-align: left;
           }
         `}
       </style>
