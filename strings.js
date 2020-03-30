@@ -14,7 +14,7 @@ export const strings = {
     fr: "jusqu'à la fin de la quarantaine"
   },
   disclaimer: {
-    nl: "(wordt geupdate met gegevens van de betrokken ministeries)",
+    nl: "(wordt geüpdatet met gegevens van de betrokken ministeries)",
     fr: "(sera mis à jour avec les données des ministères concernés)"
   },
   credit: {
