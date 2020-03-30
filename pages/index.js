@@ -255,12 +255,11 @@ const Index = ({ language }) => {
         }
       `}</style>
       <div className="container">
-        {loaded ? (
-          <Countdown
-            date={new Date(2020, 3, 20)}
-            renderer={createRenderer(language)}
-          />
-        ) : null}
+        <Countdown
+          date={new Date(2020, 3, 20)}
+          renderer={createRenderer(language)}
+        />
+
         <p>{getString("heading", language)}</p>
 
         <Progressbar
