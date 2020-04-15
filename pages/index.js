@@ -160,7 +160,7 @@ const Index = ({ language }) => {
     }, 50);
   });
 
-  //return <Countdown date={new Date(2020, 3, 20)} renderer={renderer} />;
+  //return <Countdown date={new Date(2020, 4, 3)} renderer={renderer} />;
   return (
     <>
       <Head>
