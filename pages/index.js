@@ -251,7 +251,7 @@ const Index = ({ language }) => {
       `}</style>
       <div className="container">
         <Countdown
-          date={new Date(2020, 3, 20)}
+          date={new Date(2020, 4, 3)}
           renderer={createRenderer(language)}
         />
 
@@ -259,7 +259,7 @@ const Index = ({ language }) => {
 
         <Progressbar
           start={new Date(2020, 2, 16)}
-          end={new Date(2020, 3, 20)}
+          end={new Date(2020, 4, 3)}
         />
         <p className="disclaimer">{getString("disclaimer", language)}</p>
 
