@@ -147,7 +147,7 @@ const Progressbar = ({ start, end, nowMs }) => {
 const Done = ({ start, nowMs, language }) => {
   const startMs = start.getTime();
   const doneMs = nowMs - startMs;
-  const days = (doneMs / 1000 / 60 / 60 / 24).toFixed(3);
+  const days = (doneMs / 1000 / 60 / 60 / 24).toFixed(4);
   return (
     <p className="now">{getString("done", language).replace("%s", days)}</p>
   );
