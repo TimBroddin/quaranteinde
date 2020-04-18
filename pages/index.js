@@ -112,20 +112,13 @@ const createRenderer = lang => {
   };
 };
 
-const Progressbar = ({ start, end }) => {
+const Progressbar = ({ start, end, nowMs }) => {
   const startMs = start.getTime();
-  const [nowMs, setNowMs] = useState(new Date().getTime());
   const endMs = end.getTime();
 
   const totalMs = endMs - startMs;
   const doneMs = nowMs - startMs;
   const pct = ((doneMs / totalMs) * 100).toFixed(5);
-
-  useEffect(() => {
-    setInterval(() => {
-      setNowMs(new Date().getTime());
-    }, 100);
-  }, []);
 
   return (
     <div>
@@ -151,14 +144,34 @@ const Progressbar = ({ start, end }) => {
   );
 };
 
+const Done = ({ start, nowMs, language }) => {
+  const startMs = start.getTime();
+  const doneMs = nowMs - startMs;
+  const days = (doneMs / 1000 / 60 / 60 / 24).toFixed(3);
+  return (
+    <p className="now">{getString("done", language).replace("%s", days)}</p>
+  );
+};
+
 const Index = ({ language }) => {
   useAnalytics();
   const [loaded, setLoaded] = useState(false);
+  const [nowMs, setNowMs] = useState(new Date().getTime());
+
   useEffect(() => {
     setTimeout(() => {
       setLoaded(true);
     }, 50);
   });
+
+  useEffect(() => {
+    setInterval(() => {
+      setNowMs(new Date().getTime());
+    }, 100);
+  }, []);
+
+  const start = new Date(2020, 2, 16);
+  const end = new Date(2020, 4, 3);
 
   //return <Countdown date={new Date(2020, 4, 3)} renderer={renderer} />;
   return (
@@ -250,17 +263,13 @@ const Index = ({ language }) => {
         }
       `}</style>
       <div className="container">
-        <Countdown
-          date={new Date(2020, 4, 3)}
-          renderer={createRenderer(language)}
-        />
+        <Countdown date={end} renderer={createRenderer(language)} />
 
         <p>{getString("heading", language)}</p>
 
-        <Progressbar
-          start={new Date(2020, 2, 16)}
-          end={new Date(2020, 4, 3)}
-        />
+        <Progressbar start={start} end={end} nowMs={nowMs} />
+
+        <Done start={start} nowMs={nowMs} language={language} />
         <p className="disclaimer">{getString("disclaimer", language)}</p>
 
         <p className="credit">{getString("credit", language)}</p>

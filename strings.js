@@ -13,6 +13,10 @@ export const strings = {
     nl: "tot het einde van de quarantaine",
     fr: "jusqu'à la fin de la quarantaine"
   },
+  done: {
+    nl: "We zitten al %s dagen in quarantaine.",
+    fr: "Nous sommes en quarantaine depuis %s jours."
+  },
   disclaimer: {
     nl: "(wordt geüpdatet met gegevens van de betrokken ministeries)",
     fr: "(sera mis à jour avec les données des ministères concernés)"
